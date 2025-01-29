@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'css/manage_user.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>مدیریت کاربران</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+
+<body>
+	{% include "nav.html" %}
+	
+	<div class="srhbox-nav1">
+        <div class="wrap">
+            <div class="search">
+                <input type="text" id="search-input" class="searchTerm" placeholder="جستجو کاربر مورد نظر" style="direction:rtl;">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+	<div class="formessage">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+	<div class="min">
+		<div class="min2">
+			<div id="results-container">
+				{% for user in users %}
+					<div class="min-box1">
+						<div class="box-min">
+							<div class="label">کد پرسنلی</div>
+							<div class="label">مشخصات اتاق</div>
+							<div class="label">نام خوابگاه</div>
+							<div class="label">تاریخ ورود</div>
+							<div class="label">تاریخ خروج</div>
+						</div>
+						<div class="box-min2">
+							<div class="label">{{ reservation.user.username }}</div>
+							<div class="label">{{ reservation.room.get_room_type_display }}</div>
+							<div class="label">{{ reservation.room.dormitory.name }}</div>
+							<div class="label">{{ reservation.check_in_date_shamsi }}</div> 
+							<div class="label">{{ reservation.check_out_date_shamsi }}</div>
+						</div>
+                        <div class="box-min3">
+                            <button class="button-2 delete-button" data-id="${reservation.id}">حذف رزرو</button>
+                        <div>  	
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+    <script>
+        $(document).ready(function() {
+            // بارگذاری اولیه همه رزروها
+            loadAllReservations();
+        
+            $('#search-input').on('input', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{% url 'search_reservations' %}",
+                    data: {
+                        'query': query
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#results-container').empty();  // پاک کردن نتایج قبلی
+                        if (data.length > 0) {
+                            data.forEach(function(reservation) {
+                                $('#results-container').append(`
+                                    <div class="min-box1">
+                                        <div class="box-min">
+                                            <div class="label">کد پرسنلی</div>
+                                            <div class="label">مشخصات اتاق</div>
+                                            <div class="label">نام خوابگاه</div>
+                                            <div class="label">تاریخ ورود</div>
+                                            <div class="label">تاریخ خروج</div>
+                                        </div>
+                                        <div class="box-min2">
+                                            <div class="label">${reservation.user.username}</div>
+                                            <div class="label">${reservation.room.room_type}</div>
+                                            <div class="label">${reservation.room.dormitory_name}</div>
+                                            <div class="label">${reservation.check_in_date_shamsi}</div> 
+                                            <div class="label">${reservation.check_out_date_shamsi}</div>
+                                        </div>
+                                        <div class="box-min3">
+                                            <button class="button-2 delete-button" data-id="${reservation.id}">حذف رزرو</button>    
+                                        </div>        
+                                    </div>
+                                `);
+                            });
+                        } else {
+                            $('#results-container').append('<p>هیچ نتیجه‌ای پیدا نشد.</p>');
+                        }
+                    }
+                });
+            });
+        
+            // تابع برای حذف رزرو
+            $(document).on('click', '.delete-button', function() {
+                var reservationId = $(this).data('id');
+                if (confirm("آیا مطمئن هستید که می‌خواهید این رزرو را حذف کنید؟")) {
+                    $.ajax({
+                        url: "{% url 'delete_reservation' %}",
+                        type: "POST",
+                        data: {
+                            'id': reservationId,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'  // اطمینان از ارسال توکن CSRF
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                alert("رزرو با موفقیت حذف شد.");
+                                $('#search-input').trigger('input');  // به‌روز رسانی لیست نتایج
+                            } else {
+                                alert("خطا در حذف رزرو.");
+                            }
+                        },
+                        error: function() {
+                            alert("خطا در ارتباط با سرور.");
+                        }
+                    });
+                }
+            });
+        
+            // تابع برای بارگذاری همه رزروها
+            function loadAllReservations() {
+                $.ajax({
+                    url: "{% url 'search_reservations' %}",
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#results-container').empty();  // پاک کردن نتایج قبلی
+                        if (data.length > 0) {
+                            data.forEach(function(reservation) {
+                                $('#results-container').append(`
+                                    <div class="min-box1">
+                                        <div class="box-min">
+                                            <div class="label">کد پرسنلی</div>
+                                            <div class="label">مشخصات اتاق</div>
+                                            <div class="label">نام خوابگاه</div>
+                                            <div class="label">تاریخ ورود</div>
+                                            <div class="label">تاریخ خروج</div>
+                                        </div>
+                                        <div class="box-min2">
+                                            <div class="label">${reservation.user.username}</div>
+                                            <div class="label">${reservation.room.room_type}</div>
+                                            <div class="label">${reservation.room.dormitory_name}</div>
+                                            <div class="label">${reservation.check_in_date_shamsi}</div> 
+                                            <div class="label">${reservation.check_out_date_shamsi}</div>
+                                        </div>
+                                        <div class="box-min3">
+                                            <button class="button-2 delete-button" data-id="${reservation.id}">حذف رزرو</button>    
+                                        </div>        
+                                    </div>
+                                `);
+                            });
+                        } else {
+                            $('#results-container').append('<p>هیچ نتیجه‌ای پیدا نشد.</p>');
+                        }
+                    }
+                });
+            }
+        });
+        
+        
+    </script>
+
+</body>
+</html>

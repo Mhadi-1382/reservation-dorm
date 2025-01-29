@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+<!------------------------------------------------------------------------------------------------header-------------------------------------------------------------------------------------------------------------------------------->	
+<div class="header"><div class="logobox"><img width="100px" src="{% static 'img/logo.png' %}"></div></div>
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle"> 
+<div class="spinner diagonal part-1"></div>
+<div class="spinner horizontal"></div>
+<div class="spinner diagonal part-2"></div>
+</label>
+<!------------------------------------------------------------------------------------------------header-------------------------------------------------------------------------------------------------------------------------------->	
+<!------------------------------------------------------------------------------------------------sidebarMenu--------------------------------------------------------------------------------------------------------------------------->	
+<div id="sidebarMenu">
+<ul class="sidebarMenuInner">
+  <li><i class="fa-solid fa-house"></i><a href="{% url 'home' %}"> صفحه اصلی</a></li>
+  <li><i class="fa-solid fa-user"></i><a href="{% url 'user_profile' %}">حساب کاربری</a></li>      
+  <li><i class="fa-solid fa-users"></i> درباره ما</li>
+    {% if request.user.is_staff %}
+      <li><a href="{% url 'management_home' %}"><i class="fa-solid fa-gear"></i><a href="{% url 'management_home' %}"> مدیریت</a></li>
+    {% endif %}
+</ul>
+</div>
+<!------------------------------------------------------------------------------------------------sidebarMenu--------------------------------------------------------------------------------------------------------------------------->	

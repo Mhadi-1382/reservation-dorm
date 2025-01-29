@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {%load static%}
+  {%load humanize%}
+    <link rel="stylesheet" href="{% static 'css/lol.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزییات اتاق</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/1046d1768f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+    {% include "nav.html" %}
+    <div class="container" style="    margin-top: 10% !important; ">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Container for the image gallery -->
+              <div class="container">
+
+                <!-- Full-width images with number text -->
+                <div class="mySlides">
+                  <div class="numbertext">1 / 3</div>
+                    <img src="{% static 'img/photo_2024-12-23_22-23-52.jpg' %}" style="width:100%">
+                </div>
+
+                <div class="mySlides">
+                  <div class="numbertext">2 / 3</div>
+                    <img src="{% static 'img/photo_2024-12-23_22-24-08.jpg' %}" style="width:100%">
+                </div>
+
+                <div class="mySlides">
+                  <div class="numbertext">3 / 3</div>
+                    <img src="{% static 'img/photo_2024-12-23_22-24-15.jpg' %}" style="width:100%">
+                </div>
+
+                <!-- Next and previous buttons -->
+                <a class="next" onclick="plusSlides(1)"> &#10094;</a>
+                <a class="prev" style="left: 4px;" onclick="plusSlides(-1)">&#10095;</a>
+              
+                <!-- Image text -->
+                <div class="caption-container">
+                  <p id="caption"></p>
+                </div>
+
+                <!-- Thumbnail images -->
+                <div class="row">
+                  <div class="col">
+                    <img class="demo cursor" src="{% static 'img/photo_2024-12-23_22-23-52.jpg' %}" style="width:100%" onclick="currentSlide(1)" alt="">
+                  </div>
+                  <div class="col">
+                    <img class="demo cursor" src="{% static 'img/photo_2024-12-23_22-24-08.jpg' %}" style="width:100%" onclick="currentSlide(2)" alt="">
+                  </div>
+                  <div class="col">
+                    <img class="demo cursor" src="{% static 'img/photo_2024-12-23_22-24-15.jpg' %}" style="width:100%" onclick="currentSlide(3)" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+                <div class="title-room">
+                    <h5>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</h5>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <p style="margin-top: 50px;"></p>
+                            <h4>قوانین:</h4>
+                            <p>- حتما خود پرسنل با کارت پرسنلی حضور داشته باشد</p>
+                            <p>- فقط تا ۴۸ ساعت میتوانید انصراف دهید</p>
+                            <p>- در زمان مقرر حضور داشته باشید</p>
+                            <p>در صورت تمایل تا حداکثر دونفر به ظرفیت اضافه شود</p>
+                            <div class="check-person-box border">
+                              <form id="reservationForm" method="post">
+                                {%csrf_token%}
+                              <div class="check-person d-flex flex-row" style="display: flex;">
+                                <div class="form-check">
+                                  <input type="radio" class="form-check-input" id="radio1" name="capacity" value="5" onclick="updatePrice()">
+                              </div>
+                              <p style="margin-right: 20px;">اضافه کردن 1 نفر به ظرفیت اتاق</p>
+                              
+                              <div class="check-person d-flex flex-row">
+                                  <div class="form-check">
+                                      <input type="radio" class="form-check-input" id="radio2" name="capacity" value="6" onclick="updatePrice()">
+                                  </div>
+                                  <p style="margin-right: 20px;">اضافه کردن 2 نفر به ظرفیت اتاق</p>
+                              </div>
+                            
+                            </div>
+                    </div>
+                    <p>توجه: به ازایه هر نفر که اضافه شود هزینه 50.000 تومان اضافه میشود!!</p>
+                    <div class="col-md-3">  
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+          <div class="row" style="margin-top: 50px;">
+            <div class="col options">
+              <h6 class="option-title">نام خوابگاه</h6>
+              <p class="option-data">{{room.dormitory.name}}</p>
+            </div>
+              <div class="col options">
+                <h6 class="option-title">استان</h6>
+              <p class="option-data">{{room.dormitory.city.province}}</p>
+              </div>
+              <div class="col options">
+                <h6 class="option-title">شهر</h6>
+              <p class="option-data">{{room.dormitory.city}}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col options">
+                <h6 class="option-title">ظرفیت</h6>
+              <p class="option-data">{{room.capacity}}</p>
+              </div>
+              <div class="col options">
+                <h6 class="option-title">نوع اتاق</h6>
+              <p id="room-type">{{room.get_room_type_display }}</p>
+              </div>
+              <div class="col options">
+                <h6 class="option-title">سرویس بهداشتی</h6>
+             
+              {% if room.room_type == "student_room" %}
+                <p>مشترک</p>
+              {% elif room.room_type == "suite" %}
+                <p>شخصی</p>
+              {% endif %}
+              </div>
+          </div>
+          <div class="row">
+              <div class="col options">
+              <h6 class="option-title">اشپزخانه</h6>
+              {% if room.room_type == "student_room" %}
+                <p>مشترک</p>
+              {% elif room.room_type == "suite" %}
+                <p>شخصی</p>
+              {% endif %}
+              </div>
+              <div class="col options">
+                <h6 class="option-title">نام اتاق</h6>
+              <p id="room-name">{{room.name}}</p>
+              </div>
+              <div class="col options" style="visibility: hidden;"></div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="rserv-box" >
+            <div class="reserv-title">
+              <h6 class="d-flex justify-content-center">صورت حساب</h6>
+            </div>
+            <div class="person-plus" id="capacity-info" style="display:none;">
+              <h6 id="capacity-message">1 نفر به ظرفیت اضافه شد</h6>
+              <p id="additional-cost">50,000 تومان</p>
+            </div>
+            <div class="price" style="margin-top: 20px; display: flex;justify-content: space-between;">
+              <h6>هزینه قابل پرداخت:</h6>
+              <h5 id="total-price">{{total_price|intcomma}} ریال</h5>
+              <input type="hidden" name="totalest_price" id="totalest_price"> <!-- تغییر id به totalest_price -->
+            </div>
+            <div class="d-grid align-content-end reserv-btn">
+              <button class="btn btn-primary btn-block" type="submit">پرداخت هزینه</button>
+            </form>
+            </div>
+          </div>  
+        </div>
+      </div>
+      <script src="{% static 'js/lol-page.js' %}"></script>
+      <script type="text/javascript">let slideIndex = 1;
+        showSlides(slideIndex); 
+
+        // Next/previous controls
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        // Thumbnail image controls
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("demo");
+          let captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+        </script>
+        <script>
+          let selectedCapacity = null;
+  
+          function updatePrice() {
+              const basePrice = {{ total_price }};
+              const additionalCost = {
+                  '5': 500000,
+                  '6': 1000000
+              };
+  
+              const checkedRadio = $("input[name='capacity']:checked");
+              
+              if (selectedCapacity === checkedRadio.val()) {
+                  checkedRadio.prop('checked', false);
+                  selectedCapacity = null;
+                  $('#total-price').text(basePrice + ' ریال');
+                  $('#capacity-info').hide(); // مخفی کردن اطلاعات ظرفیت
+                  return; 
+              }
+  
+              if (checkedRadio.length) {
+                  selectedCapacity = checkedRadio.val();
+                  const totalPrice = basePrice + (additionalCost[selectedCapacity] || 0);
+                  $('#total-price').text(totalPrice + ' ریال');
+                      
+                  $('#totalest_price').val(totalPrice); // مقدار نهایی را به فیلد مخفی اختصاص دهید
+  
+                  // نمایش پیام مربوط به ظرفیت
+                  if (selectedCapacity === '5') {
+                      $('#capacity-message').text('1 نفر به ظرفیت اضافه شد');
+                      $('#additional-cost').text('500,000 ریال');
+                  } else if (selectedCapacity === '6') {
+                      $('#capacity-message').text('2 نفر به ظرفیت اضافه شد');
+                      $('#additional-cost').text('1,000,000 ریال');
+                  }
+  
+                  $('#capacity-info').show(); // نمایش اطلاعات ظرفیت
+              }
+          }
+  
+          // هنگام ارسال فرم، ظرفیت انتخاب‌شده را به یک فیلد مخفی اضافه کنید
+          $('#reservationForm').on('submit', function() {
+              if (selectedCapacity) {
+                  $('<input>').attr({
+                      type: 'hidden',
+                      name: 'capacity',
+                      value: selectedCapacity
+                  }).appendTo('#reservationForm');
+              }
+          });
+      </script>
+</body>
+</html>

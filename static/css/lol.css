@@ -1,0 +1,181 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+.home_product{
+    padding: 20px 10px;
+    font-size: 1em;
+    }
+    .home_product .shoping-card{
+    text-align: center;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    margin: 10px 15px;
+    padding: 10px;
+    }
+    .shoping-card .img-sec{
+    position: relative;
+    }
+    .shoping-card .img-sec img{
+    width: 60%;
+    }
+    .shoping-card .title{
+    color: #333;
+    margin: 10px;
+    }
+    .shoping-card .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    }
+    .shoping-card .buttons .right .price{
+    color: #666;
+    font-weight: bold;
+    }
+    .shoping-card .buttons .left{
+    display: flex;
+    }
+    
+    .shoping-card .buttons .left .extend-btn:hover .b-text{
+    display: block;
+    }
+    .shoping-card .buttons .left .extend-btn .b-text{
+    display: none;
+    color: white;
+    }
+    .shoping-card .buttons .left .extend-btn .b-icon{
+    color: white;
+    padding: 3px;
+    }
+    * {
+        box-sizing: border-box;
+      }
+      
+      /* Position the image container (needed to position the left and right arrows) */
+      .container {
+        position: relative;
+      }
+      
+      /* Hide the images by default */
+      .mySlides {
+        display: none;
+      }
+      
+      /* Add a pointer when hovering over the thumbnail images */
+      .cursor {
+        cursor: pointer;
+      }
+      
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+      
+      /* Container for image text */
+      .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+      }
+      
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* Six columns side by side */
+      .column {
+        float: left;
+        width: 16.66%;
+      }
+      
+      /* Add a transparency effect for thumnbail images */
+      .demo {
+        opacity: 0.6;
+      }
+      
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+    
+      .options{
+        padding-bottom: 60px;
+        height: 70px;
+        border-radius: 5px;
+        margin: 10px;
+        margin-bottom: 15px;
+        background-color: #e4e4e4; 
+        justify-content: center;
+      }
+      .rserv-box{
+        padding: 19px;
+        display: grid;
+        height: 250px;
+        width: 100%;
+        background-color: #e4e4e4;
+        border-radius: 5px;
+        margin-top: 40px;
+        box-shadow: 2px 2px 2px #666;
+      }
+      .option-title {
+        color: #a0a0a0 ;
+      }
+      .check-person-box{
+        display: flex;
+      }
+      .reserv-btn{
+        bottom: 5px;
+      }
+      .person-plus{
+        border: 2px solid rgb(142, 148, 196);
+        border-top-left-radius:15px ;
+        border-bottom-left-radius: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+

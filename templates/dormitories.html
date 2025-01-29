@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head>
+	{% load static %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/srh1.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<title>خوابگاه ها</title>
+</head>
+<style>
+
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+    font-family: "Font Awesome 6 Free" !important;
+}
+@media (max-width: 768px) {
+    .button-1 {font-size: 13.7px !important;}
+}
+</style>
+<body>
+    {% include "nav.html" %}
+	<div class="min">
+	<div class="min2">
+		{% if dormitories %}
+        <div class="titel-box"><div class="titel-box-tex">نتایج بر اساس شهر {{ city.name }}</div></div>
+			{% for dormitory in dormitories %}
+	    <div class="min-box1">
+
+		<div class="box-min"><img src="{% static '/img/logo.png' %}"></div>
+		<div class="box-min2">
+		<div class="box-min3"><div class="label">{{ dormitory.name }}</div></div>
+		<div class="box-min4"><a class="button-1" role="button" href="{% url 'search_availability' dormitory.id %}">انتخاب</a></div>
+		</div>
+		</div>
+			{% endfor %}
+		{% else %}
+		<p>هیچ خوابگاهی برای این شهر پیدا نشد.</p>
+        {% endif %}
+		
+		</div>
+	</div>
+
+
+<!------------------------------------------------------------------------------------------------min box------------------------------------------------------------------------------------------------------------------------------->	
+</body>
+</html>

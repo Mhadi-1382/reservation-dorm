@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+    <link rel="stylesheet" href="{% static 'css/manage_user.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>مدیریت کاربران</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+
+<body>
+	{% include "nav.html" %}
+	
+	<div class="srhbox-nav1">
+        <div class="wrap">
+            <div class="search">
+                <input type="text" id="search-input" class="searchTerm" placeholder="جستجو کاربر مورد نظر" style="direction:rtl;">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+	<div class="formessage">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+	<div class="min">
+		<div class="min2">
+			<div id="results-container">
+				{% for user in users %}
+					<div class="min-box1">
+						<div class="box-min">
+							<div class="label">نام</div>
+							<div class="label">نام خانوادگی</div>
+							<div class="label">کد پرسنلی</div>
+							<div class="label">کد ملی</div>
+							<div class="label">شماره تلفن</div>
+						</div>
+						<div class="box-min2">
+							<div class="label">{{ user.name }}</div>
+							<div class="label">{{ user.last_name }}</div>
+							<div class="label">{{ user.username}}</div>
+							<div class="label">{{user.national_id}}</div> 
+							<div class="label">{{ user.phone_number }}</div>
+						</div>
+						<div class="box-min3">
+							<a class="button-1" href="{% url 'change_password' user.username %}">تغییر رمز عبور</a>
+							<a class="button-2" href="{% url 'delete_user' user.username %}">حذف کاربر</a>	
+						</div>		
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+    <script>
+        $(document).ready(function() {
+            $('#search-input').on('input', function() {
+                var query = $(this).val();
+                $.ajax({
+                    url: "{% url 'search_users' %}",
+                    data: {
+                        'query': query
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#results-container').empty();  // پاک کردن نتایج قبلی
+                        if (data.length > 0) {
+                            $.each(data, function(index, user) {
+                                $('#results-container').append(`
+                                    <div class="min-box1">
+                                        <div class="box-min">
+                                            <div class="label">نام</div>
+                                            <div class="label">نام خانوادگی</div>
+                                            <div class="label">کد پرسنلی</div>
+                                            <div class="label">کد ملی</div>
+                                            <div class="label">شماره تلفن</div>
+                                        </div>
+                                        <div class="box-min2">
+                                            <div class="label">${user.name}</div>
+                                            <div class="label">${user.last_name}</div>
+                                            <div class="label">${user.username}</div>
+                                            <div class="label">${user.national_id}</div>
+                                            <div class="label">${user.phone_number}</div>
+                                        </div>
+                                        <div class="box-min3">
+                                            <a class="button-1" href="{% url 'change_password' user.username %}">تغییر رمز عبور</a>
+                                            <a class="button-2" href="{% url 'delete_user' user.username %}">حذف کاربر</a>    
+                                        </div>        
+                                    </div>
+                                `);
+                            });
+                        } else {
+                            $('#results-container').append('<p>هیچ نتیجه‌ای پیدا نشد.</p>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

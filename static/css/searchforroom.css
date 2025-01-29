@@ -1,0 +1,153 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+body {
+    background-image:url(../img/2.jpg);
+    background-size: cover;
+    direction: rtl; /* جهت متن */
+    text-align: right; /* تراز متن به سمت راست */
+}
+
+*{
+    direction: rtl;
+    font-family: iran;
+    box-sizing: border-box;
+}
+h2 {
+    color: #333;
+    direction: rtl;
+}
+
+.form-control {
+    border-radius: 25px;
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,.5);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-radius: 25px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.alert {
+    border-radius: 10px;
+}
+.emptyall{
+    width: 500px;
+    height: 100px;
+    background-color:rgb(174, 217, 255);
+    font-size:30px ;
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+    line-height: 100px;
+}
+.emptyroom{
+    width: 300px;
+    height: 70px;
+    background-color:rgb(174, 217, 255);
+    font-size:20px ;
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    line-height: 70px; 
+}
+.register-login-btn {
+    border: 1px solid #666;
+    font-size: 17px;
+    padding:0px 9px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-supper-offer{
+    display: flex;
+    position: absolute;
+    top: 10px;
+    background-color: #e74c3c;
+    padding: 7px 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: white;
+    }
+.p-form{
+        font-size: 20px;
+    }
+.cont-detail{
+        position: absolute; 
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+.card {
+        border-radius: 10px; /* گوشه‌های گرد */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه */
+        margin-bottom: 20px; /* فاصله بین کارت‌ها */
+        text-align: center; /* متن وسط چین */
+    }
+
+
+
+    .room-card {
+        border-radius: 15px; /* گوشه‌های گرد */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* سایه */
+        margin-bottom: 30px; /* فاصله بین کارت‌ها */
+        text-align: center; /* متن وسط چین */
+    }
+    
+    .room-image {
+        border-top-left-radius: 15px; /* گوشه‌های گرد بالای چپ */
+        border-top-right-radius: 15px; /* گوشه‌های گرد بالای راست */
+        height: 200px; /* ارتفاع تصویر */
+        object-fit: cover; /* پوشش تصویر */
+    }
+    
+    .room-price {
+        font-size: 1.5rem; /* اندازه بزرگ‌تر قیمت */
+        color: #28a745; /* رنگ سبز برای قیمت */
+    }
+    
+    .btn-reserve {
+        background-color: #007bff; /* رنگ دکمه رزرو */
+        color: white;
+    }
+    
+    .btn-reserve:hover {
+        background-color: #0056b3; /* رنگ دکمه هنگام هاور */
+    }
+
+    @media (max-width: 576px) {
+        /* این استایل‌ها برای اندازه‌های موبایل و تبلت اعمال می‌شوند */
+        .container{
+            margin-top:600px ;
+        }
+      }
+.input-group .form-control{
+    z-index: 0 !important;
+}

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, 
+body {
+    overflow-x: hidden;
+    height: 100%;
+	font-family: 'Vazir', Arial, sans-serif;
+    font-weight:normal;
+}
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+	direction: rtl;
+}
+/*------------------------------------------------------------------------------------------min---------------------------------------------------------------------------------------------------------------------------------------*/
+body{
+    direction: rtl;
+}
+.min{
+	width: 85%;
+	height: 350px;
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 150px;
+
+	
+}
+
+/*------------------------------------------------------------------------------------------------min----------------------------------------------------------------------------------------------------------------------------------*/
+#submit{
+	background-color: #0a6ed1;
+	width:170px;
+    height: 40px;
+  border-radius: 5px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+#submit:hover{
+	background: #074799;
+	color: #FFF5D7;
+	border-radius: 7px;
+
+}
+.button-form{
+	display: flex;
+	flex-direction: row;
+    
+}
+#register{
+	text-decoration: none;
+	color: #0C0C0C;
+	margin: auto;
+	width: 60%;
+	text-align: center; 
+	margin-right: 10px;
+}
+#register a{
+	margin: auto;
+	color: #31363F;
+	text-decoration: none;
+}
+.login-box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	padding: 40px;
+	transform: translate(-50%,-50%);
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.login-box h2{
+	margin: 0 0 30px;
+	padding: 0;
+	color: black;
+	text-align: center;
+}
+.login-box .user-box input{
+	position: relative;
+	width: 100%;
+	padding: 10px;
+	font-size: 16px;
+	color: rgb(40, 40, 40);
+	margin-bottom: 30px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background:#FFFFFF;
+	box-shadow: rgba(53, 64, 66, 0.3) 0px 0px 0px 1px;
+	border-radius: 20px;
+	transition: border-color 0.1s, box-shadow 0.1s; 
+	
+}
+.login-box .user-box label{
+	position: relative;
+	left: 0;
+	top: -60px;
+	padding: 20px 0;
+	font-size: 20px;
+	color:rgb(43, 43, 43);
+	pointer-events: none;
+	transition: .5s;
+    margin-right: 10px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label{
+	top: -85px;
+	left: 0;
+	color: black;
+	font-size: 18px;
+}
+.login-box .user-box input:focus {
+    outline: none; /* حذف خط دور پیش‌فرض */
+    border: 1px solid #168eff; /* تنظیم رنگ و ضخامت مرز */
+    box-shadow: 0 0 5px #4aa7ff; /* اضافه کردن سایه برای جلوه بیشتر */
+}
+
+.creat-ac{
+    font-size: 14px;
+    
+    margin-top: 10px;
+}
+.creat-ac a{
+    text-decoration: none;
+}
+.message {
+	margin-bottom: 15px;
+	padding: 10px;
+	border-radius: 4px;
+}
+.error {
+	color: red;
+	background-color: #f2dede;
+}
+.success{
+	color: rgb(68, 208, 63);
+	background-color: #eeffeb;
+
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html><head>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+	<script src="{% static 'js/home.js' %}"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=devic-width,initial-scale=1.0">
+<title>صفحه اصلی</title>
+</head>
+
+<style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+
+<body>
+    {% include "nav.html" %}
+<!-------------------------------------------------------------------------------------------------search box--------------------------------------------------------------------------------------------------------------------------->	
+	
+	<div class="srhbox-nav1">
+	<div class="searchBox">
+	<form method="POST" action="{% url 'home' %}">
+	{% csrf_token %}
+    <div class="input-box">
+    <i class="uil uil-search"></i>
+    <input type="text" placeholder="جستجوی برای ..."  name="query"/>
+    <button class="button" type="submit">جستجوی</button>
+    </div>
+	</form>
+    </div>
+	</div>
+<!------------------------------------------------------------------------------------------------search box--------------------------------------------------------------------------------------------------------------------------->
+	<div class="nav2">
+
+            <div class="slide active">
+                <img src="{% static 'img/1.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/2.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/3.jpg' %}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/31143_684.jpg' %}" alt="">
+            </div>
+            <a href="#" class="prev">&gt;</a>
+            <a href="#" class="next">&lt;</a>
+
+	</div>
+<!---------------------------------------------------------------------------------------------min box------------------------------------------------------------------------------------------------------------------------------>	<div class="min">
+	<div class="min2">
+		<div class="min-box2">
+		<div class="titel-box"><div class="titel-box1">فیلتر کردن</div><div class="titel-box2"></div></div>
+     <form id="reservation-form">
+		<div class="box-min-filter">
+		<div class="dropdown">
+                <label class="label" for="province">انتخاب استان</label>
+                <select id="province" name="province">
+                    <option value="">انتخاب استان</option>
+                    <option value="3">تهران</option>
+                    <option value="1">مازندران</option>
+                    <option value="2">اصفهان</option>
+                </select>
+            </div>
+		<div class="dropdown">
+                <label class="label" for="city">انتخاب شهر</label>
+                <select id="city" name="city">
+                    <option value="">انتخاب شهر</option>
+                </select>
+            </div>
+			<div class="sp-box"></div>
+		<button class="submit-btn">جستجو</button>
+		</div>
+    </form>
+		</div>
+	<div class="min-box1">
+		<div class="titel-box"><div class="titel-box1">استان ها</div><div class="titel-box2"><button class="button-1" role="button" style="font-size: 12px !important;"> نمایش همه</button></div></div>
+		<div class="box-min">
+		<div class="box-min-box"><div class="box-min-box-img"><img src="{% static 'img/Screenshot 2024-12-27 233417.png' %}"><div class="content"><a>شهر ها</a><p></p></div></div></div>
+		<div class="box-min-box"><div class="box-min-box-img"><img src="{% static 'img/Screenshot 2024-12-27 233448.png' %}"><div class="content"><a>شهر ها</a><p></p></div></div></div>
+		<div class="box-min-box"><div class="box-min-box-img"><img src="{% static 'img/Screenshot 2024-12-27 233428.png' %}"><div class="content"><a>شهر ها</a><p></p></div></div></div>
+		<div class="box-min-box"><div class="box-min-box-img"><img src="{% static 'img/Screenshot 2024-12-27 233407.png' %}"><div class="content"><a>شهر ها</a><p></p></div></div></div>
+		</div>
+		</div>
+	
+	</div>
+	</div>
+<!------------------------------------------------------------------------------------------------min box------------------------------------------------------------------------------------------------------------------------------->
+    {% include "footer.html" %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'js/slidebar.js' %}"></script> 
+<script>
+	$(document).ready(function() {
+	  $('#province').change(function() {
+		  const selectedCategory = $(this).val();
+		  
+		  $.ajax({
+			  url: '{% url "get_items" %}',
+			  data: {
+				  'category': selectedCategory
+			  },
+			  success: function(data) {
+				  $('#city').empty(); // پاک کردن گزینه‌های قبلی
+				  $('#city').append('<option value="">انتخاب شهر</option>'); // گزینه پیش‌فرض
+				  
+				  $.each(data, function(index, item) {
+					  $('#city').append('<option value="' + item.id + '">' + item.name + '</option>');
+				  });
+			  }
+		  });
+	  });
+  });
+  </script>
+  <script>
+	document.getElementById('reservation-form').onsubmit = function(event) {
+		event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
+		const cityId = document.getElementById('city').value; // فرض بر این است که این مقدار ID شهر است
+	
+		if (cityId) {
+			window.location.href = "/khabgahapp/city/" + cityId + "/dormitories/"; // استفاده از مسیر ثابت
+		} else {
+			alert('لطفا یک شهر معتبر انتخاب کنید.');
+		}
+	};
+	
+  </script>
+</body>
+</html>

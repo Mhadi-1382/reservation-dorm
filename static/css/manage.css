@@ -1,0 +1,52 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+.total_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 1%;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+}
+
+.option {
+    background-color: #007bff; /* رنگ آبی */
+    color: white;
+    padding: 20px 40px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 24px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.option:hover {
+    background-color: #0056b3; /* رنگ تیره‌تر */
+    transform: scale(1.05);
+}
+
+.option i {
+    font-size: 40px; /* اندازه آیکون */
+    display: block; /* نمایش آیکون در خط جدید */
+}

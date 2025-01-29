@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/auth.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="utf-8">
+<title>ثبت نام</title>
+</head>
+
+<body>
+	<div class="min">
+	<div class="login-box">
+	<h2>ثبت‌ نام</h2>
+		<form method=post>
+			{% csrf_token %}
+		<div  class="user-box">
+			<input type="text" name="username" required="">
+			<label>کد پرسنلی</label>
+			</div>
+			<div  class="user-box">
+			<input type="text" name="national_id" required>
+			<label>کد ملی</label>
+			</div>
+			<div  class="user-box">
+			<input type="text" name="name" required>
+			<label>نام</label>
+			</div>
+			<div  class="user-box">
+				<input type="text" name="last_name" required>
+				<label>نام خانوادگی</label>
+			</div>
+			<div  class="user-box">
+				<input type="password" name="password" required>
+				<label>رمز عبور</label>
+			</div>
+			<div class="user-box">
+			<input type="password" name="phone_number" required>
+				<label>شماره تماس</label>
+			</div>
+			<div class="button-form">
+			<button type="submit" id="submit" style="margin-right: 22%;">ثبت نام</button>
+			
+			</div>
+			<div class="creat-ac" style="margin-right: 29%;">
+				<span>حساب کاربری دارید؟</span>
+				<a class="text-primary" href="{% url 'login' %}">ورود</a>
+			</div>
+		</form>
+		
+			{% if messages %}
+				{% for message in messages %}
+					<div class="message {{ message.tags }}">{{ message }}</div>
+				{% endfor %}
+			{% endif %}
+	</div>
+			<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		  if (event.target == modal) {
+			modal.style.display = "none";
+		  }
+		}
+		</script>
+</body>
+</html>

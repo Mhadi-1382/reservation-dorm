@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>حساب کاربری</title>
+    <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'js/bootstrap-5.3.3-dist/css/bootstrap.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/1046d1768f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.15/cropper.min.css" />
+    <style>
+    .fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+        font-family: "Font Awesome 6 Free" !important;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.7); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%; 
+            max-width: 400px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .modal h3 {
+            margin-bottom: 15px;
+        }
+        #fileInput {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    {% include "nav.html" %}
+    <div class="orgc">
+    <div class="container mt-4">
+        <h2>اطلاعات کاربر</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Main Tabs -->
+                <ul class="nav nav-tabs flex-column " style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                    <li class="nav-iteme">
+                        <a class="nav-link active border" onclick="openMainTab(event, 'profile')"><i class='fas fa-user-alt'></i> حساب کاربری</a>
+                    </li>
+                    <li class="nav-iteme border">
+                        <a class="nav-link" onclick="openMainTab(event, 'mysaved')"><i class='fas fa-star'></i> ذخیره های من</a>
+                    </li>
+                    <li class="nav-iteme border">
+                        <a class="nav-link" href="{% url 'logout' %}"><i class='fas fa-sign-out-alt'></i> خروج از حساب</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Main Tab Content -->
+                <div id="profile" class="tab-content active">
+                    <!-- Vertical Tabs Inside London -->
+                    <div class="row mt-3">
+                        <div class="vertical-tabs">
+                            <ul class="nav nav-content border-bottom ul-style">
+                                <li class="nav-iteme li-style">
+                                    <a class="nav-link  active" onclick="openNestedTab(event, 'profile-details')">اطلاعات کاربری</a>
+                                </li>
+                                <li class="nav-iteme li-style">
+                                    <a class="nav-link" onclick="openNestedTab(event, 'my-rez')">رزرو های من</a>
+                                </li>       
+                                <li class="nav-iteme li-style">
+                                    <a class="nav-link" onclick="openNestedTab(event, 'chanch-pass')">تغییر رمز عبور</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Nested Tab Content -->
+                        <div class="border" style="margin-top: 7%; padding: 30px;padding-bottom: 70px;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                            <div id="profile-details" class="tab-content tab-bkar active">
+                                <div class="row">
+                                    <form method="post" enctype="multipart/form-data" action="{% url 'update_profile' %}">
+                                        {% csrf_token %}
+                                    <div class="col-md-12">
+                                        <div class="w-100 profile-img-b" >
+                                            <div class="profile-pic">
+                                                <img class="profile-img" id="profilePic" 
+                                                src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{{ MEDIA_URL }}profile_pics/default.png{% endif %}" 
+                                                alt="">
+                                                <i class='fas fa-camera' style="bottom: 5px;"></i>
+                                            </div>
+                                            <button type="button" class="edit-photo" id="editProfilePicBtn" >ویرایش عکس</button>
+                                           
+                                        </div>
+                                        <div id="myModal" class="modal">
+                                            <div class="modal-content">
+                                                <h3>انتخاب عکس جدید</h3>
+                                                <input type="file" id="fileInput" accept="image/*" name="image">
+                                                <button class="btn" id="saveBtn" type="submit">ذخیره تغییرات</button>
+                                                <button type="button" class="btn" id="closeModalBtn">بستن</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="w-100 border-bottom" style="display: flex;margin-top: 2%;">
+                                            <label for="username">نام و نام خانوادگی:</label>
+                                            <p>{{ user.name }} {{ user.last_name }}</p>
+                                        </div>
+                                        <div class="w-100 border-bottom" style="display: flex;margin-top: 2%;">
+                                            <label for="username">کد پرسنلی:</label>
+                                            <p>{{ user.username }}</p>
+                                        </div>
+                                        <div class="w-100 border-bottom" style="display: flex;margin-top: 2%;">
+                                            <label for="username">کد ملی:</label>
+                                            <p>{{ user.national_id }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="w-100 border-bottom" style="display: flex;margin-top: 2%;">
+                                            <label for="username">تاریخ عضویت:</label>
+                                            <p><span class="year">{{ user.date_joined_shamsi }}</span>/<span class="month">6</span>/<span class="day">8</span></p>
+                                        </div>
+                                        <div class="w-100 border-bottom" style="display: flex;margin-top: 2%;">
+                                            <label for="username">شماره تلفن:</label>
+                                            <p>{{user.phone_number}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="my-rez" class="tab-content tab-bkar">
+                                {% if reservations %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <ul class="list-group mb-4">
+                                            {% for reservation in reservations %}
+                                                <li class="list-group-item reservation-item">
+                                                    <div>
+                                                        <strong>اتاق:</strong> {{ reservation.room.name }}<br>
+                                                        <strong>تاریخ ورود:</strong> {{ reservation.check_in_date_shamsi }}<br>
+                                                        <strong>تاریخ خروج:</strong> {{ reservation.check_out_date_shamsi }}<br>
+                                                    </div>
+                                                    <!-- تایمر -->
+                                                    <!-- <div class="timer" id="timer-{{ reservation.id }}"></div>  -->
+                                                    <form action="{% url 'cancel_reservation' reservation.id %}" method="post" style="display:inline;">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-warning btn-sm" id="cancel-button-{{ reservation.id }}">لغو رزرو</button>
+                                                    </form>
+                                                </li>
+                                                <!-- <script>
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        const checkInDateString = "{{ reservation.created_at|date:'Y-m-d H:i:s' }}"; // دریافت تاریخ ورود به فرمت مناسب
+                                                        const checkInDate = new Date(checkInDateString + " GMT+0330"); // اضافه کردن منطقه زمانی ایران
+                                                        const now = new Date(); // زمان فعلی
+                        
+                                                        // بررسی اعتبار تاریخ
+                                                        if (isNaN(checkInDate.getTime())) {
+                                                            console.error("تاریخ ورود نامعتبر است:", checkInDateString);
+                                                            return; // متوقف کردن اجرای کد در صورت نامعتبر بودن تاریخ
+                                                        }
+                        
+                                                        // محاسبه زمان گذشته از تاریخ ورود
+                                                        const timePassed = now.getTime() - checkInDate.getTime(); // زمان گذشته بر حسب میلی‌ثانیه
+                        
+                                                        // مقدار اولیه برای 48 ساعت به میلی‌ثانیه
+                                                        let timeLeft = (48 * 60 * 60 * 1000) - timePassed; // 48 ساعت منهای زمان گذشته
+                        
+                                                        const timerElement = document.getElementById("timer-{{ reservation.id }}");
+                        
+                                                        // تابعی برای به‌روزرسانی تایمر
+                                                        function updateTimer() {
+                                                            if (timeLeft > 0) {
+                                                                // محاسبه ساعت، دقیقه و ثانیه باقی‌مانده
+                                                                const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60)); // ساعت باقی‌مانده
+                                                                const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // دقیقه باقی‌مانده
+                                                                const secondsLeft = Math.floor((timeLeft % (1000 * 60)) / 1000); // ثانیه باقی‌مانده
+                        
+                                                                timerElement.innerHTML = `زمان باقی مانده برای لغو رزرو: ${hoursLeft} ساعت، ${minutesLeft} دقیقه و ${secondsLeft} ثانیه`;
+                        
+                                                                // کاهش زمان باقی‌مانده
+                                                                timeLeft -= 1000; // کاهش یک ثانیه
+                                                            } else {
+                                                                timerElement.innerHTML = "زمان لغو رزرو به پایان رسیده است.";
+                                                                document.getElementById("cancel-button-{{ reservation.id }}").disabled = true; // غیرفعال کردن دکمه لغو
+                                                                const messageElement = document.createElement('div');
+                                                                messageElement.className = 'alert alert-danger';
+                                                                messageElement.innerHTML = 'زمان شما برای لغو رزرو گذشته است.';
+                                                                timerElement.parentNode.appendChild(messageElement); // اضافه کردن پیام به DOM
+                                                                clearInterval(timerInterval); // متوقف کردن تایمر
+                                                            }
+                                                        }
+                        
+                                                        // به‌روزرسانی تایمر هر ثانیه
+                                                        const timerInterval = setInterval(updateTimer, 1000);
+                                                    });
+                                                </script> -->
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <p>شما هیچ رزوی ندارید.</p>
+                            {% endif %}
+                            </div>
+                            <form method="post" action="user_profile">
+                                {% csrf_token %}
+                            <div id="chanch-pass" class="tab-content tab-bkar">
+                                    <div class="mb-3 w-75" style="margin: auto;">
+                                      <label for="pwd" class="form-label">رمز فعلی:</label>
+                                      <input type="password" class="form-control"   name="old_password">
+                                    </div>
+                                    <div class="mb-3 w-75" style="margin: auto;">
+                                        <label for="pwd" class="form-label">رمز جدید:</label>
+                                        <input type="password" class="form-control"   name="new_password">
+                                      </div>
+                                      <div class="mb-3 w-75" style="margin: auto;">
+                                        <label for="pwd" class="form-label">تایید رمز جدید:</label>
+                                        <input type="password" class="form-control"   name="confirm_password">
+                                      </div>
+                                    <button type="submit"  class="btn btn-primary" style="margin-right: 13%;">اعمال</button>
+                                    </form>
+                                  
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+    
+                <div id="mysaved" class="tab-content border">
+                    <h3>دخیره های من</h3>
+                    <p>درحال ساخت...</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="formessage">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    </div>
+
+    <script>
+        const editProfilePicBtn = document.getElementById('editProfilePicBtn');
+        const modal = document.getElementById('myModal');
+        const fileInput = document.getElementById('fileInput');
+        const profilePic = document.getElementById('profilePic');
+        const saveBtn = document.getElementById('saveBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+    
+        // نمایش پنجره مدال
+        editProfilePicBtn.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+    
+        // بستن پنجره مدال
+        closeModalBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+    
+        // انتخاب عکس جدید
+        fileInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+     
+                    saveBtn.dataset.fileSelected = true; // نشان دادن اینکه عکسی انتخاب شده است
+                }
+                reader.readAsDataURL(file);
+            } else {
+                saveBtn.dataset.fileSelected = false; // اگر عکسی انتخاب نشده باشد
+            }
+        });
+    
+        // ذخیره تغییرات
+        saveBtn.addEventListener('click', function() {
+            if (!fileInput.files.length) { // بررسی اینکه آیا عکسی انتخاب نشده است
+                alert('لطفاً یک عکس انتخاب کنید!');
+            } else {
+                alert('عکس پروفایل با موفقیت تغییر کرد!');
+                modal.style.display = 'none'; // بستن پنجره بعد از ذخیره
+            }
+        });
+    
+        // بستن پنجره مدال اگر کاربر خارج از آن کلیک کند
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+    <script src="{% static 'js/user_profile.js' %}"></script>
+
+</body>
+</html>

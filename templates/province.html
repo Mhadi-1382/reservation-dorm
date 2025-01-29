@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	{% load static %}
+	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="{% static 'css/srh.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=devic-width,initial-scale=1.0">
+<title>شهر ها</title>
+</head>
+<style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+
+<body>
+    {% include "nav.html" %}
+
+<!-------------------------------------------------------------------------------------------------min box------------------------------------------------------------------------------------------------------------------------------>	
+	<div class="min">
+	<div class="min2">
+		<div class="titel-box"><div class="titel-box-tex">نتایج بر اساس {{ province.name }}</div></div>
+		{% for city in cities %}
+	<div class="min-box1">
+		<div class="box-min">
+		<div class="titel-box"><div class="titel-box-tex">{{ city.name }}</div></div>
+		<div class="titel-box1"><div class="titel-box-tex1">خوابگاه ها</div></div>
+		<div class="box-min2">
+			<div class="box-min3">
+				<div class="label">دانشگاه مازندران</div>
+				<div class="label">#</div>
+				<div class="label">#</div>
+				<div class="label">#</div>
+				<div class="titel-box1"></div>
+			</div></div></div><div class="content"><a href="{% url 'city_dormitories' city.id %}">موارد بیشتر</a><p></p></div></div>
+		{% endfor %}
+	</div>
+ 
+
+<!------------------------------------------------------------------------------------------------min box------------------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

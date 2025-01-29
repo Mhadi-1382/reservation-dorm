@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تایید رزرو</title>
+    {% load static %}
+    {% load humanize %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/success.css' %}">
+    <link rel="stylesheet" href="{% static 'Content/bootstrap-theme.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'Content/MdBootstrapPersianDateTimePicker/jquery.Bootstrap-PersianDateTimePicker.css' %}" />
+    <script src="{% static 'Scripts/jquery-2.1.4.js' %}" type="text/javascript"></script>
+    <script src="{% static 'Scripts/bootstrap.min.js' %}" type="text/javascript"></script>
+</head>
+<style>
+.fa, .fa-brands, .fa-regular, .fa-solid, .fab, .far, .fas {
+font-family: "Font Awesome 6 Free" !important;
+}
+</style>
+<body dir=rtl>
+ {% include "nav.html" %}
+  <!-- محتوای صفحه -->
+  <div class="container mt-4" style="margin-top:10% !important">
+      <h1 class="text-success">رزرو شما با موفقیت انجام شد!</h1>
+
+      <h3>جزئیات رزرو:</h3>
+
+      <div class="alert alert-light border-left border-success p-3 mb-4">
+          <p>هویت: {{ reservation.user.first_name }} {{ reservation.user.last_name }} {{ reservation.user.username }}</p>
+          <p><i class="fas fa-bed"></i> نام اتاق: {{ reservation.room.name }}</p>
+          <p><i class="fas fa-calendar-alt"></i> تاریخ ورود: {{ check_in_date }}</p>
+          <p><i class="fas fa-calendar-times"></i> تاریخ خروج: {{ check_out_date }}</p>
+          <p><i class="fas fa-users"></i> ظرفیت: {{ reservation.number_of_people }} نفر</p>
+          <p><i class="fas fa-money-bill-wave"></i> قیمت کل: {{ reservation.total_price|intcomma }} ریال</p>
+      </div>
+
+      <!-- دکمه دانلود PDF -->
+      <a href="{% url 'download_pdf' reservation.id %}" class="btn btn-success">دانلود PDF</a>
+
+      <!-- دکمه بازگشت به صفحه اصلی -->
+      <a href="{% url 'home' %}" class="btn btn-secondary">بازگشت به صفحه اصلی</a>
+  </div>
+
+</body>
+
+</html>

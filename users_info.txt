@@ -1,0 +1,35 @@
+
+users in database for test:
+
+	amirreza soltani
+	ID=4521785412
+	password=7685463!
+*************************************
+	hosein rahimi
+	ID=4879782135
+	password=77770987!
+*************************************
+	soroosh hoseini
+	ID=0125478965
+	password=39876132!
+*************************************
+	hasan hashemi
+	ID=0587954125
+	password=39876132!
+*************************************
+
+superuser in database for test:
+	
+	amirabbas hoseini
+	ID=4980462022
+	password=asd
+*************************************
+
+staffuser in database for test:
+
+	siroos karimi
+	ID=0132564785
+	password=52852!465!
+*************************************
+
+	

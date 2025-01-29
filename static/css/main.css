@@ -1,0 +1,52 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+
+body {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+@font-face {
+    font-family: iran;
+    src:url(../font/Parastoo.ttf);
+}
+*{
+    direction: rtl;
+    font-family: iran;
+    box-sizing: border-box;
+}
+body{
+    font-size: 16px;
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.register-login-btn {
+    margin-top: 20px; /* Adjust as necessary */
+}
+
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  
+  .form-check {
+    display: flex;
+    margin-bottom: 10px; /* فاصله بین چک باکس‌ها */
+}
+
+.form-check-input {
+    right: 5px;
+    margin-right: auto; /* فاصله بین چک باکس و لیبل */
+}

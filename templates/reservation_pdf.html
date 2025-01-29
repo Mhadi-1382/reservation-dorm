@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    {% load static %}
+    {% load humanize %}
+    <meta charset="UTF-8">
+    <title>جزئیات رزرو</title>
+    <style>
+        
+        @font-face {
+            font-family: 'Pinar';
+            src: url(../font/Pinar-FD-VF.ttf);
+        }
+
+        * {
+            font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+            line-height: 1.5 !important;
+            font-size: 15px !important;
+        }
+        @font-face {
+            font-family: 'Vazir';
+            src: url('{% static "fonts/Vazir.ttf" %}') format('truetype');
+        }
+        body {
+            font-family: 'Vazir', sans-serif;
+            direction: rtl; /* راست‌چین کردن متن */
+            text-align: right; /* تراز کردن متن به سمت راست */
+            background-color: #f9f9f9; /* پس‌زمینه ملایم */
+            margin: 20px; /* حاشیه برای صفحه */
+        }
+        h1 {
+            color: #4CAF50; /* رنگ سبز */
+            border-bottom: 2px solid #4CAF50; /* خط زیر عنوان */
+            padding-bottom: 10px;
+        }
+        p {
+            font-size: 14px; /* اندازه فونت پاراگراف */
+            margin: 10px 0; /* حاشیه بین پاراگراف‌ها */
+        }
+        .summary {
+            background-color: #ffffff; /* پس‌زمینه سفید */
+            border-radius: 5px; /* گوشه‌های گرد */
+            padding: 15px; /* پدینگ داخلی */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* سایه برای عمق بیشتر */
+        }
+        .total-price {
+            font-size: 16px; /* اندازه بزرگتر برای قیمت کل */
+            font-weight: bold; /* ضخیم کردن متن */
+            color: #d9534f; /* رنگ قرمز برای قیمت کل */
+        }
+    </style>
+</head>
+<body>
+    <h1>جزئیات رزرو</h1>
+
+    <div class="summary">
+        <p>هویت: {{ reservation.user.first_name }} {{ reservation.user.last_name }} {{ reservation.user.username }}</p>
+        <p>نام اتاق: {{ reservation.room.name }}</p>
+        <p>تاریخ ورود: {{ check_in_date }}</p> <!-- استفاده از تاریخ شمسی -->
+        <p>تاریخ خروج: {{ check_out_date }}</p> <!-- استفاده از تاریخ شمسی -->
+        <p>ظرفیت: {{ reservation.number_of_people }} نفر</p>
+        <p class="total-price">قیمت کل: {{ reservation.total_price|intcomma }} ریال</p>
+    </div>
+</body>
+</html>

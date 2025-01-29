@@ -1,0 +1,214 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+body {
+  font-family: "Lato", sans-serif;
+   direction: rtl;
+  }
+.tab-content {
+  display: none; padding: 20px;
+    border-top: none;
+  }
+  .tab-contente {
+  display: none; padding: 20px;
+   border: 1px solid #ccc;
+    border-top: none;
+  }
+.tab-content.active {
+  display: block;
+}
+
+.nav-tabs .nav-link.active {
+  background-color:#0157A0 !important;
+  color: white !important;
+}
+.nav-tabs .nav-link {
+  border-radius: 0;  
+}
+.nav-link:hover{
+  cursor: pointer;
+}
+.tab-bkar{
+  border: none;
+}
+.nav-content {
+  --bs-nav-content-link-active-color: #000000;
+}
+.nav-content .nav-link {
+  border-radius: var(--bs-nav-content-border-radius);
+}
+.nav-content .nav-link.active,
+.nav-content .show > .nav-link {
+  color: var(--bs-nav-content-link-active-color);
+  background-color: var(--bs-nav-content-link-active-bg);
+}
+.nav-iteme a{
+  color:#686868 ;
+}
+
+.nav-iteme a.active{
+  color:rgb(0, 0, 0) !important;
+  font-weight: bold;
+}
+
+/*************************************************************************************************************************************************************/
+.ul-style {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+text-transform: uppercase;
+color: grey;
+}
+.ul-style .li-style {
+padding: 0 .5em .25em;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+transition: .3s;
+}
+.ul-style .li-style:hover {
+color: #fff;
+}
+.ul-style .li-style:before {
+content: "";
+position: absolute;
+inset: calc(100% - 3px) 0 0 0; /* 3px = the thickness */
+background: #2088ce; /* the color */
+scale: 0 1;
+transition: .3s, translate 0s .3s;
+}
+.ul-style:hover .li-style:before {
+scale: 1;
+}
+.ul-style .li-style:hover:before {
+translate: 0;
+transition: .3s;
+}
+.ul-style:hover .li-style:has(~ .li-style:hover):before {
+translate: 100% 0;
+transition: .2s .2s,scale 0s .4s;
+}
+.ul-style:hover .li-style:hover ~ .li-style:before {
+translate: -100% 0;
+transition: .2s .2s,scale 0s .4s;
+}
+
+ul{
+  padding: 0%;
+}
+.nav-link{
+  border-radius: 0% !important ;
+}
+.profile-img-container{
+display: flex;
+}
+.profile-pic{
+display: flex;
+position: relative;
+width: 95px;
+height: 95px;
+border-radius: 50%;
+background-size: 65px 65px;
+object-fit: cover;
+}
+.profile-pic:hover{
+cursor: pointer;
+}
+.profile-pic i{
+position: absolute;
+top: 85%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 18px;
+color: rgb(223, 223, 223);
+margin-right: 40%;
+
+}
+.profile-img{
+width: 95px;
+display: flex;
+padding-bottom: 7px;
+border-radius: 100px;
+padding-top: var(--bs-navbar-brand-padding-y);
+padding-bottom: var(--bs-navbar-brand-padding-y);
+margin-right: var(--bs-navbar-brand-margin-end);
+font-size: var(--bs-navbar-brand-font-size);
+color: var(--bs-navbar-brand-color);
+text-decoration: none;
+white-space: nowrap;
+margin: 0px 20px;
+}
+.edit-photo{
+font-size: 14px;
+background-color: #fbfdff;
+border-radius: 80px;
+color: rgb(0, 0, 0);
+padding: 7px;
+margin: 0px 20px;
+
+}
+.profile-img-b{
+height: 120px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+text-decoration: none;
+white-space: nowrap;
+background-image: url(../img/photo_2025-01-10_18-30-30.jpg);
+border-radius: 5px;
+margin-bottom: 10px;
+}
+.orgc{
+  margin-top: 8% !important;
+
+}
+@media (max-width: 576px) {
+  /* این استایل‌ها برای اندازه‌های موبایل و تبلت اعمال می‌شوند */
+  .orgc{
+    margin-top: 30% !important;
+  }
+}
+@media (max-width: 768px) {
+  /* این استایل‌ها برای اندازه‌های موبایل و تبلت اعمال می‌شوند */
+  .orgc{
+    margin-top: 30% !important;
+  }
+}
+@media (max-width: 576px) {
+  /* این استایل‌ها برای اندازه‌های موبایل و تبلت اعمال می‌شوند */
+  .ul-style{
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (width: 1024px) {
+  /* این استایل‌ها برای اندازه‌های موبایل و تبلت اعمال می‌شوند */
+  .orgc{
+    margin-top: 20% !important;
+  }
+}
+.error {
+  margin:auto;
+  text-align: center;
+	color: red;
+	background-color: #f2dede;
+}
+.success{
+	color: rgb(68, 208, 63);
+	background-color: #eeffeb;
+
+}
+.formessage{
+  margin:auto;
+  text-align: center;
+  width:30%;     
+}

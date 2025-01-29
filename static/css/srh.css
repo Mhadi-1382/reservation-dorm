@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html, 
+body {
+    overflow-x: hidden;
+    height: 100%;
+	font-family: 'Vazir', Arial, sans-serif;
+    font-weight:normal;
+}
+body {
+    background: #F8FAFC;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+	direction: rtl;
+}
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+.header {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #1B1B1B;
+    position: fixed;
+    height: 100px;
+    overflow: hidden;
+    z-index: 10;
+	direction: rtl;
+}
+.logobox{
+	width: 100px;
+	height: 100px;
+	display: inline-flex;
+}
+
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------Sidebar----------------------------------------------------------------------------------------------------------------------------------------*/
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+	direction: rtl;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 250px;
+	margin-top: 100px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+	direction: rtl;
+    background:#2E2E2E;
+	z-index: 1;
+}
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+	direction: rtl;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+	font-size: 20px;
+}
+.sidebarMenuInner li span{
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+/*--------------------------------------------------------------------------------------Sidebar---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------min---------------------------------------------------------------------------------------------------------------------------------------*/
+.min{
+	width: 85%;
+	height: auto;
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 150px;
+	display: flex;
+}
+.min2{
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.min-box1{
+	width: 22%;
+	height: 300px;
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	background-color: #EEEEEE;
+	display: inline-flex;
+	margin-right: 2%;
+	margin-top: 10px;
+	padding: 10px;
+	position: relative;
+}
+.titel-box{
+	width: 100%;
+	height: 15%;
+	display: flex;
+}
+.titel-box-tex{
+	width: 100%;
+	height: 50px;
+    align-items: center;
+	text-align:center;
+	font-size: 24px;
+	padding: 10px;
+}
+.titel-box1{
+	width: 100%;
+	height: 10%;
+	display: flex;
+}
+.titel-box-tex1{
+	width: 100%;
+	height: 50px;
+    align-items: center;
+	text-align:center;
+	font-size: 16px;
+	padding: 4px;
+}
+.box-min{
+	width: 100%;
+	height: 100%;
+	margin-right: 5px;
+	display: inline-block;
+}
+.box-min2{
+	width: 100%;
+	height: 75%;
+	display: inline-flex;
+}
+.box-min3{
+	width: 100%;
+	height: 100%;
+}
+.box-min4{
+	width: 50%;
+	height: 100%;
+}
+.label{
+	width: 100%;
+	height: 20%;
+	display: flex;
+	margin-top: 4px;
+	padding: 10px;
+	font-size: 16px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	border-radius: 5px;
+}
+.button-1 {
+  background-color: #0A5EB0;
+  width:110px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 10px;
+  margin-right: 10%;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-1:hover,
+.button-1:focus {
+  background-color: #074799;
+}
+.button-2 {
+  background-color: #FF204E;
+  width:110px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 10px;
+  margin-right: 10%;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-2:hover,
+.button-2:focus {
+  background-color: #A0153E;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.20);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	opacity: 0;
+	transition: 0.6s;
+	border-radius: 15px;
+}
+.content:hover{
+	opacity: 1;
+}
+.content a{
+	font-size: 25px;
+	color: #1D1616;
+}
+.content p{
+	font-size: 11px;
+	color: black;
+}
+.content > *{
+	transform: translateY(25px);
+	transition: transform 0.6s;
+}
+.content:hover{
+	transform: translateY(0px);
+}
+/*------------------------------------------------------------------------------------------------min----------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------mobil-body---------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width:768px) and (min-width:375px){
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+.header {
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #1B1B1B;
+    position: fixed;
+    height: 50px;
+    overflow: hidden;
+    z-index: 10;
+	direction: rtl;
+}
+.logobox{
+	width: 50px;
+	height: 50px;
+	display: inline-flex;
+}
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------Sidebar----------------------------------------------------------------------------------------------------------------------------------------*/
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 10px;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 150px;
+	margin-top: 50px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+	direction: rtl;
+    background:#2E2E2E;
+	z-index: 1;
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+	font-size: 14px;
+}
+/*--------------------------------------------------------------------------------------Sidebar---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------min---------------------------------------------------------------------------------------------------------------------------------------*/
+.min{
+	width: 95%;
+	height: auto;
+	border-radius: 15px;
+	margin: auto;
+	margin-top: 100px;
+	display: flex;
+}
+.min2{
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.min-box1{
+	width: 45%;
+	height: 200px;
+	border-radius: 15px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	background-color: #EEEEEE;
+	display: inline-flex;
+	margin-right: 2%;
+	margin-top: 20px;
+	padding: 10px;
+	position: relative;
+}
+.titel-box{
+	width: 100%;
+	height: 15%;
+	display: flex;
+}
+.titel-box-tex{
+	width: 100%;
+	height: 50px;
+    align-items: center;
+	text-align:center;
+	font-size: 20px;
+	padding: 10px;
+}
+.titel-box1{
+	width: 100%;
+	height: 10%;
+	display: flex;
+}
+.titel-box-tex1{
+	width: 100%;
+	height: 50px;
+    align-items: center;
+	text-align:center;
+	font-size: 12px;
+	padding: 4px;
+}
+.box-min{
+	width: 100%;
+	height: 100%;
+	margin-right: 5px;
+	display: inline-block;
+}
+.box-min2{
+	width: 100%;
+	height: 75%;
+	display: inline-flex;
+}
+.box-min3{
+	width: 100%;
+	height: 100%;
+}
+.box-min4{
+	width: 50%;
+	height: 100%;
+}
+.label{
+	width: 100%;
+	height: 20%;
+	display: flex;
+	margin-top: 4px;
+	padding: 10px;
+	font-size: 11px;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	border-radius: 5px;
+}
+.button-1 {
+  background-color: #0A5EB0;
+  width:110px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 10px;
+  margin-right: 10%;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-1:hover,
+.button-1:focus {
+  background-color: #074799;
+}
+.button-2 {
+  background-color: #FF204E;
+  width:110px;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-top: 10px;
+  margin-right: 10%;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.button-2:hover,
+.button-2:focus {
+  background-color: #A0153E;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.20);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	opacity: 0;
+	transition: 0.6s;
+	border-radius: 15px;
+}
+.content:hover{
+	opacity: 1;
+}
+.content a{
+	font-size: 25px;
+	color: #1D1616;
+}
+.content p{
+	font-size: 11px;
+	color: black;
+}
+.content > *{
+	transform: translateY(25px);
+	transition: transform 0.6s;
+}
+.content:hover{
+	transform: translateY(0px);
+}
+/*------------------------------------------------------------------------------------------------min----------------------------------------------------------------------------------------------------------------------------------*/
+}
+/*------------------------------------------------------------------------------------mobil-body---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------tablet-body--------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width:1000px) and (min-width:768px){
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+.header {
+    height: 70px;
+}
+.logobox{
+	width: 70px;
+	height: 70px;
+}
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------Sidebar----------------------------------------------------------------------------------------------------------------------------------------*/
+.main {
+    margin-top: 10px;
+}
+#sidebarMenu {
+	margin-top: 70px;
+}
+/*--------------------------------------------------------------------------------------Sidebar---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------min---------------------------------------------------------------------------------------------------------------------------------------*/
+.min{
+	width: 95%;
+	margin-top: 120px;
+}
+.min-box1{
+	width: 45%;
+	height: 200px;
+	margin-right: 3%;
+	margin-top: 20px;
+	padding: 10px;
+}
+.titel-box-tex{
+	height: 50px;
+	font-size: 20px;
+	padding: 4px;
+}
+.titel-box-tex1{
+	font-size: 12px;
+	padding: 4px;
+}
+.label{
+	padding: 4px;
+	font-size: 16px;
+}
+/*------------------------------------------------------------------------------------------------min----------------------------------------------------------------------------------------------------------------------------------*/	
+}
+/*------------------------------------------------------------------------------------tablet-body--------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------lap-body--------------------------------------------------------------------------------------------------------------------------------------*/
+@media screen and (max-width:1439px) and (min-width:1020px){
+.header {
+    height: 100px;
+}
+.logobox{
+	width: 100px;
+	height: 100px;
+}
+/*---------------------------------------------------------------------------------------header----------------------------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------Sidebar----------------------------------------------------------------------------------------------------------------------------------------*/
+#sidebarMenu {
+	margin-top: 100px;
+}
+/*--------------------------------------------------------------------------------------Sidebar---------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------------------min---------------------------------------------------------------------------------------------------------------------------------------*/
+.min{
+	width: 95%;
+	margin-top: 120px;
+}
+.min-box1{
+	width: 22%;
+	height: 250px;
+	margin-right: 2%;
+	margin-top: 20px;
+	padding: 10px;
+}
+.titel-box-tex{
+	height: 50px;
+	font-size: 23px;
+	padding: 4px;
+}
+.titel-box-tex1{
+	font-size: 12px;
+	padding: 4px;
+}
+.label{
+	margin-top: 4px;
+	padding: 5px;
+	font-size: 16px;
+}
+/*------------------------------------------------------------------------------------------------min----------------------------------------------------------------------------------------------------------------------------------*/	
+}
+/*---------------------------------------------------------------------------------------lap-body--------------------------------------------------------------------------------------------------------------------------------------*/

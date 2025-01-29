@@ -1,0 +1,53 @@
+
+@font-face {
+	font-family: 'Pinar';
+	src: url(../font/Pinar-FD-VF.ttf);
+}
+
+* {
+	font-family: 'Pinar', tahoma, Geneva, Verdana, sans-serif !important;
+	line-height: 1.5 !important;
+	font-size: 15px !important;
+}
+body{
+    background-image:url(../img/photo_2024-11-13_18-23-23.jpg);
+    background-size: cover;
+}
+*{
+    direction: rtl;
+    font-family: iran;
+    box-sizing: border-box;
+}
+.login-card{
+    width: 400px;
+    height: 350px;
+    margin: auto;
+    margin-top: 250px;
+    padding: 30px;
+}
+.btn-login-card{
+    margin-top: 50px;
+}
+.dont-have-ac a{
+    position: absolute;
+    left:70px;
+    bottom: 60px;
+    font-size: 13px;
+}
+.df{
+    width: 300px;
+    border-radius: 20px;
+}
+.creat-ac{
+    font-size: 12px;
+}
+.btn-entr{
+    width: 100px;
+    margin-right: 31%;
+    margin-top: 35px;
+    font-size: 20px;
+    border-radius: 20px;
+}
+.btn-entr a{
+    color: white;
+}
