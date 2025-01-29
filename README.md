@@ -3,6 +3,8 @@
 ![GitHub Stars](https://img.shields.io/github/stars/Mhadi-1382/reservation-dorm)
 ![GitHub Forks](https://img.shields.io/github/forks/Mhadi-1382/reservation-dorm)
 
+<br />
+
 ## Installation & Usage
 1. You can install project dependencies like this:
 ```
