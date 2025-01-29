@@ -5,8 +5,8 @@
 
 <br />
 
-## Installation & Usage
-1. You can install project dependencies like this:
+## Installation
+You can install project dependencies like this:
 ```
 pip install -r requirements.txt
 ```
