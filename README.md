@@ -12,4 +12,4 @@ pip install -r requirements.txt
 ```
 
 ## Licence
-This project is <a href="https://github.com/Mhadi-1382/ticki/blob/main/LICENSE">MIT<a/> licenced.
+This project is <a href="https://github.com/Mhadi-1382/reservation-dorm/blob/main/LICENSE">MIT<a/> licenced.
